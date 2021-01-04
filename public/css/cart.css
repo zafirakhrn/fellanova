@@ -20,4 +20,13 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+
+.total{
+  flex-direction: row;
+  flex: content;
+  width: 500px;
+}
+
+
+
   
