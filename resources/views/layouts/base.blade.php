@@ -30,10 +30,6 @@
     #navbarSupportedContent a:hover {
       color: black;
     }
-
-    #loginBtn {
-      border: 1px solid black !important;
-    }
   </style>
 </head>
 
@@ -66,14 +62,14 @@
       <div style="width: fit-content; margin-right: 50px; background-color:#FFFFFF;  font-display: white;" class="button">
       @if(isset(Auth::user()->email))
 
-     <strong style="margin-right:15px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
+     <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
         <a href="/logout/">
         <button id="loginBtn" type="button" class="btn  btn-success">Logout</button>
         </a>
       @else
         <a href="/login/">
         <button id="loginBtn" type="button" class="btn  btn-success">Login</button>
-      </a>
+        </a>
 
       @endif
       

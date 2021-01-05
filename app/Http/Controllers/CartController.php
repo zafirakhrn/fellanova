@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Burger;
 use Illuminate\Http\Request;
+use App\Models\Burger;
 use App\Models\Cart;
 use App\Models\Drink;
 use App\Models\Pizza;
@@ -19,17 +19,21 @@ class CartController extends Controller
         return view ('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request, $type,$id)
     {
         $request->validate([]);
-        
-        $burger = Burger::find($id);
-        $pizza = Pizza::find($id);
-        $drink = Drink::find($id);
+
+        if($type == 'burger')
+            $burger = Burger::find($id);
+        if($type == 'pizza')
+            $pizza = Pizza::find($id);
+        if($type == 'drink')
+            $drink = Drink::find($id);
         $user = auth()->user()->id;
 
+
         $cart = new Cart;
-        if ($cart->jenis_makananMinuman = $burger->jenis_burger) {
+        if ($type == 'burger' && $cart->jenis_makananMinuman = $burger->jenis_burger) {
             # code...
             $cart->jenis_makananMinuman = $burger->jenis_burger;
             $cart->quantity = $request->quantity;
@@ -40,33 +44,34 @@ class CartController extends Controller
             $cart->status=1;
             $cart->user_id = $user;
             $cart->save();
-
-
-        } else if ($cart->jenis_makananMinuman = $pizza->jenis_pizza) {
+        } 
+        if ($type == 'pizza' && $cart->jenis_makananMinuman = $pizza->jenis_pizza) {
             # code...
             $cart->jenis_makananMinuman = $pizza->jenis_pizza;
             $cart->quantity = $request->quantity;
             $cart->harga = $pizza->harga;        
             $cart->image = $pizza->image;
-            $cart->total = $cart->harga * $cart->quantity;
-            $cart->subtotal = $cart->total + $cart->total;
+            $cart->subtotal = $cart->harga * $cart->quantity;
+            $cart->total += $cart->subtotal;
+            $cart->status=1;
+            $cart->user_id = $user;
             $cart->save();
 
-        } else if ($cart->jenis_makananMinuman = $drink->jenis_drink) {
+        } 
+        if ($type == 'drink' && $cart->jenis_makananMinuman = $drink->jenis_minuman) {
             # code...
-            $cart->jenis_makananMinuman = $drink->jenis_drink;
+            $cart->jenis_makananMinuman = $drink->jenis_minuman;
             $cart->quantity = $request->quantity;
             $cart->harga = $drink->harga;        
             $cart->image = $drink->image;
-            $cart->total = $cart->harga * $cart->quantity;
-            $cart->subtotal = $cart->total + $cart->total;
+            $cart->subtotal = $cart->harga * $cart->quantity;
+            $cart->total += $cart->subtotal;
+            $cart->status=1;
+            $cart->user_id = $user;
             $cart->save();
         }
 
-
-        // dd($subtotal);
         return redirect('/cart')->with(['success', 'Berhasil Ditambah Ke Keranjang']);
-
     }
 
     public function destroy($id)

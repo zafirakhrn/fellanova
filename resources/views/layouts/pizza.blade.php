@@ -25,11 +25,15 @@
             <p class="product-title">{{$pizza['jenis_pizza']}}</p>
             <p class="product-title">IDR {{$pizza['harga']}}</p>
             <div class="quantity">
-                <button id="min" type="button" class="glyphicon glyphicon-minus" onclick="hitung('-', {{$pizza['id']}})"></button>
-                <input style="width: 35px; border:none;text-align: center; margin-bottom:10px;" value="0" id="{{$pizza['id']}}" />
-                <button id="plus" type="button" class="glyphicon glyphicon-plus" onclick="hitung('+', {{$pizza['id']}})"></button>
+                <form action="/cart_create/pizza/{{$pizza['id']}}" method="post">@csrf
+                    <button id="min" type="button" class="glyphicon glyphicon-minus" onclick="hitung('-', {{$pizza['id']}})" value=""></button>
+                    <label for="quantity">
+                        <input style="width: 35px; border:none;text-align: center; margin-bottom:10px;" name="quantity" value="0" id="{{$pizza['id']}}" />
+                    </label>
+                    <button id="plus" type="button" class="glyphicon glyphicon-plus" onclick="hitung('+', {{$pizza['id']}})" value="{{$pizza['id']}}"></button>
             </div>
-            <button id="ProductBtn" type="button" class="btn btn-primary">Order Now</button>
+                <button type="submit" class="btn btn-primary"> Order Now </button>
+            </form>
         </div>
         @endforeach
     </div>
@@ -39,7 +43,7 @@
 @section('jscript')
 <script language="JavaScript">
     function hitung(operasi, id) {
-        id = id.toString();   
+        id = id.toString();
         bil1 = document.getElementById(id).value;
         if (operasi == "+") {
             bil1 = parseInt(bil1);

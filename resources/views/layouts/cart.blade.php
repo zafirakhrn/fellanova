@@ -60,7 +60,12 @@
             <tr>
                 <td colspan="3"></td>
                 <td class="hidden-xs text-center"><strong>Total {{number_format($subtotal)}}</strong></td>
+                <td>
+                    <button type="submit" class="btn btn-danger btn-sm" style="padding: 5px;"> Check Out </button>  
+                </td>
+            
             </tr>
+            
         </tfoot>
     </table>
 </div>
