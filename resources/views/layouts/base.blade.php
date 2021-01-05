@@ -57,8 +57,15 @@
               <li class="nav-item">
                 <a class="nav-link" href="/location/" style="margin-left:20px;">Location</a>
               </li>
+      </div>
+      <div>
           </div>
       </div>
+      <div style="width: fit-content; background-color:#FFFFFF;  font-display: white;">
+    <a href="/cart/">
+        <button id="cartBtn" type="button" style="margin-right: 20px;"><i class="fa fa-shopping-cart"></i></button>
+        </div>
+      
       <div style="width: fit-content; margin-right: 50px; background-color:#FFFFFF;  font-display: white;" class="button">
       @if(isset(Auth::user()->email))
 
@@ -72,8 +79,8 @@
         </a>
 
       @endif
-      
-      </div>
+    </div>
+
     </nav>
   </nav>
   @section('body')
