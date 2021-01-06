@@ -26,7 +26,7 @@
         </div>
         <div class="column">
             <a href="/burger/">
-                <div class="container-menu2">
+                <div class="container-menu">
                     <div class="gambar">
                         <img style="zoom : 130%;" src="https://media.discordapp.net/attachments/767045716420853772/768334564275781632/chicken.png">;
                         <div class="title" style="margin-left: 60px;margin-top:80px;">
@@ -38,7 +38,7 @@
         </div>
         <div class="column">
             <a href="/drink/">
-                <div class="container-menu3">
+                <div class="container-menu">
                     <div class="gambar2">
                         <img style="zoom : 130%;" src="https://www.dsmenu.com/user-folder/images/0/644/1438219296-644.png">;
                         <div class="title" style="margin-left: 100px;">

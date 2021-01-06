@@ -50,3 +50,5 @@ Route::get('/cart', [App\Http\Controllers\CartController::class,'create']);
 Route::post('/cart_create/{type}/{id}', [App\Http\Controllers\CartController::class,'store']);
 Route::get('/cart_delete/{id}', [App\Http\Controllers\CartController::class,'destroy']);
 
+
+Route::post('/checkout', [App\Http\Controllers\CheckoutController::class,'store']);

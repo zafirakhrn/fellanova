@@ -20,7 +20,6 @@
   @section('head')
   @show
 
-
   <style>
     a {
       color: black;
@@ -30,6 +29,7 @@
     #navbarSupportedContent a:hover {
       color: black;
     }
+
   </style>
 </head>
 
@@ -60,19 +60,19 @@
           </div>
       </div>
       <div style="width: fit-content; margin-right: 50px; background-color:#FFFFFF;  font-display: white;" class="button">
-      @if(isset(Auth::user()->email))
+        @if(isset(Auth::user()->email))
 
-     <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
+        <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
         <a href="/logout/">
-        <button id="loginBtn" type="button" class="btn  btn-success">Logout</button>
+          <button id="loginBtn" type="button" class="btn btn-danger">Logout</button>
         </a>
-      @else
+        @else
         <a href="/login/">
-        <button id="loginBtn" type="button" class="btn  btn-success">Login</button>
+          <button id="loginBtn" type="button" class="btn btn-warning">Login</button>
         </a>
 
-      @endif
-      
+        @endif
+
       </div>
     </nav>
   </nav>
