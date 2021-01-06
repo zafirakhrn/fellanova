@@ -7,6 +7,7 @@ use App\Models\Burger;
 use App\Models\Cart;
 use App\Models\Drink;
 use App\Models\Pizza;
+use App\Models\Checkout;
 
 class CartController extends Controller
 {

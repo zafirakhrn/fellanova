@@ -25,7 +25,7 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        //
+     // return view ('layouts/summary', ['carts' => $cart, 'subtotal' => $subtotal]);
     }
 
     /**
