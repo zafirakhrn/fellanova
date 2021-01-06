@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   @section('head')
@@ -29,7 +30,6 @@
     #navbarSupportedContent a:hover {
       color: black;
     }
-
   </style>
 </head>
 
@@ -57,30 +57,28 @@
               <li class="nav-item">
                 <a class="nav-link" href="/location/" style="margin-left:20px;">Location</a>
               </li>
-      </div>
-      <div>
           </div>
+        </nav>
       </div>
-      <div style="width: fit-content; background-color:#FFFFFF;  font-display: white;">
-    <a href="/cart/">
-        <button id="cartBtn" type="button" style="margin-right: 20px;"><i class="fa fa-shopping-cart"></i></button>
-        </div>
-      
+
+
       <div style="width: fit-content; margin-right: 50px; background-color:#FFFFFF;  font-display: white;" class="button">
         @if(isset(Auth::user()->email))
-
         <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
+
+        <a href="/cart">
+          <button style="margin-right: 20px; font-size:15px; background-color: #B81900; border: none;" type="button" class="btn btn-sm">
+            <span style="color: white;" class="glyphicon glyphicon-shopping-cart"></span></button>
+        </a>
         <a href="/logout/">
-          <button id="loginBtn" type="button" class="btn btn-danger">Logout</button>
+          <button style="background-color: #B81900; color:white;" id="loginBtn" type="button" class="btn btn-danger">Logout</button>
         </a>
         @else
         <a href="/login/">
-          <button id="loginBtn" type="button" class="btn btn-warning">Login</button>
+          <button style="background-color: #EF9630; color:white;" id="loginBtn" type="button" class="btn">Login</button>
         </a>
-
-      @endif
-    </div>
-
+        @endif
+      </div>
     </nav>
   </nav>
   @section('body')

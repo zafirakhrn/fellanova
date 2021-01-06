@@ -14,87 +14,87 @@
     }
     
     .drink:hover {
-        transform: scale(1.050);
-      }
+    transform: scale(1.050);
+    }
     
     .square{
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
     }
     
     h1{
-        margin-left: 95px;
-        font-family: 'Montserrat', sans-serif;
+    margin-left: 95px;
+    font-family: 'Montserrat', sans-serif;
+    color : #B81900;
+    
     }
     .product-title{
-        font-weight: 700;
-        text-align: center;
-        padding: 0;
-        font-size: 2rem;
-        color: black;
-        font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    font-size: 2rem;
+    color: black;
+    font-family: 'Roboto', sans-serif;
     
     }
     .img-fluid{
-        margin: auto;
-        display: block;
-        max-width: 100%; 
-        height: auto;
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
     }
     .btn.btn-primary {
-        font-size: 10px;
-        text-align: center;
-        align-content: center;
-        border-radius: 2em;
-        border: 0 !important;
-        color: #000 !important;
-        text-transform: uppercase;
-        outline: none !important;
-        box-shadow: none !important;
-        background-color: white !important;
-        display:block;
-        margin: auto;
+    font-size: 10px;
+    text-align: center;
+    align-content: center;
+    border-radius: 2em;
+    border: 0 !important;
+    color: #000 !important;
+    text-transform: uppercase;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: white !important;
+    display:block;
+    margin: auto;
     }
     .back{
-        display: flex;
-        flex-direction: row;
-        margin-left: 95px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 95px;
     
     }
     .back i {
-        height: fit-content;
-        text-transform: uppercase;
-        color: #333333;
-        letter-spacing: 3px;  
+    height: fit-content;
+    text-transform: uppercase;
+    color: #333333;
+    letter-spacing: 3px;
     }
     
     .back h1{
-        margin: 0 !important;
+    margin: 0 !important;
     }
     
     .quantity{
-        width: fit-content;
-        margin: auto;
+    width: fit-content;
+    margin: auto;
     }
     #min{
-        color: black;
-        border:none;
-        background-color: transparent;
+    color: black;
+    border:none;
+    background-color: transparent;
     }
     #min:focus{
-        border: none;
-        outline: none;
+    border: none;
+    outline: none;
     }
     #plus{
-        color: black;
-        border:none;
-        background-color: transparent;
+    color: black;
+    border:none;
+    background-color: transparent;
     }
     #plus:focus{
-        border: none;
-        outline: none;
+    border: none;
+    outline: none;
     }
-    
-    
