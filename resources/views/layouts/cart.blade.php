@@ -75,13 +75,10 @@
                     <td colspan="3"></td>
                     <td class="hidden-xs text-center"><strong style="font-family:montserrat;">Total {{number_format($subtotal)}}</strong></td>
                     <td>
-                        <<<<<<< Updated upstream <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"><a href="/summary/"> Check Out </button> </a>
-                            =======
-                            <<<<<<< HEAD <button type="submit" class="btn btn-sm" style="background-color: #B81900; color:white; padding: 5px;"> Check Out </button>
-                                =======
-                                <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"><a href="/summary/"> Check Out </button> </a>
-                                >>>>>>> 2f337c8a61c7caed64a65bbdbba0360118762cad
-                                >>>>>>> Stashed changes
+                       <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"><a href="/summary/"> Check Out </button> </a>
+                         
+                       
+                                
                     </td>
 
                 </tr>
