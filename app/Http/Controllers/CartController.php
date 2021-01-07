@@ -14,23 +14,19 @@ class CartController extends Controller
     //
     public function create()
     {
-        $cart = Cart::where('user_id', auth()->user()->id)->where('status', null)->get();
-        $subtotal = Cart::where('user_id', auth()->user()->id)->where('status', null)->sum('subtotal');
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
+        $subtotal = Cart::where('user_id', auth()->user()->id)->where('status', 1)->sum('subtotal');
         return view('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal]);
     
         // $user = auth()->user()->id;
         // $cart = Cart::where('user_id',$user)->where('status', null)->get();
         // $subtotal = Cart::where('user_id',$user)->get()->sum('subtotal');
-
-        // return view ('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal]);
-
-        
+        // return view ('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal])
     }
 
     public function store(Request $request, $type,$id)
     {
         $request->validate([]);
-
         if($type == 'burger')
             $burger = Burger::find($id);
         if($type == 'pizza')
@@ -49,8 +45,7 @@ class CartController extends Controller
             $cart->image = $burger->image;
             $cart->subtotal = $cart->harga * $cart->quantity;
             $cart->total += $cart->subtotal;
-
-            // $cart->status=1;
+            $cart->status=1;
             $cart->user_id = $user;
             $cart->save();
         } 
@@ -62,7 +57,7 @@ class CartController extends Controller
             $cart->image = $pizza->image;
             $cart->subtotal = $cart->harga * $cart->quantity;
             $cart->total += $cart->subtotal;
-            // $cart->status=1;
+            $cart->status=1;
             $cart->user_id = $user;
             $cart->save();
 
@@ -75,7 +70,7 @@ class CartController extends Controller
             $cart->image = $drink->image;
             $cart->subtotal = $cart->harga * $cart->quantity;
             $cart->total += $cart->subtotal;
-            // $cart->status=1;
+            $cart->status=1;
             $cart->user_id = $user;
             $cart->save();
         }

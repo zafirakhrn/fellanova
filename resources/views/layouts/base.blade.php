@@ -61,7 +61,6 @@
         </nav>
       </div>
 
-
       <div style="width: fit-content; margin-right: 50px; background-color:#FFFFFF;  font-display: white;" class="button">
         @if(isset(Auth::user()->email))
         <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>

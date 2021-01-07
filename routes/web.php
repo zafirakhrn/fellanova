@@ -25,9 +25,7 @@ Route::get('/about', [PagesController::class,'about']);
 Route::get('/location', [PagesController::class,'location']);
 Route::get('/profile', [PagesController::class,'profile']);
 Route::get('/payment', [PagesController::class,'payment']);
-Route::get('/summary', [PagesController::class,'summary']);
 
-// Route::get('/cart', [PagesController::class,'cart']);
 
 
 Route::get('/register', [AuthController::class,'register']);
@@ -53,4 +51,7 @@ Route::post('/cart_create/{type}/{id}', [App\Http\Controllers\CartController::cl
 Route::get('/cart_delete/{id}', [App\Http\Controllers\CartController::class,'destroy']);
 
 
-Route::post('/summary', [App\Http\Controllers\CheckoutController::class,'store']);
+Route::post('/checkout', [App\Http\Controllers\CheckoutController::class,'store']);
+
+Route::get('/summary', [App\Http\Controllers\CheckoutController::class,'tampilan_data']);
+

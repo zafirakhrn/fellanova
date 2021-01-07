@@ -25,9 +25,8 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-     // return view ('layouts/summary', ['carts' => $cart, 'subtotal' => $subtotal]);
+        //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -36,48 +35,43 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $user = auth()->user()->id;
-        $cart = Cart::where('user_id', $user)->where('status', null)->get();
-        
+        $cart = Cart::where('user_id', $user)->where('status', 1)->get();
+        // dd(length($cart));
         if (empty($cart)) {
             # code...
             return redirect('/cart')->with(['sucsess', 'Tidak ada pesanan']);
         }
-
         $checkout = new Checkout;
         $checkout->name = auth()->user()->name;
-
+        
         $pesanan = Cart::where('user_id', $user)->count('id');
         $checkout->jumlah_pesanan = $pesanan;
 
         $quan = Cart::where('user_id', $user)->sum('quantity');
         $checkout->quantity = $quan;
-
+        
         $sub = Cart::where('user_id', $user)->sum('subtotal');
         $checkout->subtotal = $sub;
-
+        
         $checkout->status = 1;
         $checkout->user_id = $user;
         $checkout->save();
         
-        foreach($cart as $carts){
-            $carts->status = 1;
+        foreach ($cart as $carts) {
+            $carts->status = 0;
             $carts->update();
         }
-
-        return redirect('/menu')->with(['sucsess','Pesanan Berhasil Di Checkout']);
+        
+        return redirect('/summary')->with(['sucsess', 'Pesanan Berhasil Di Checkout']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Checkout  $checkout
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Checkout $checkout)
+    public function tampilan_data()
     {
-        //
+        $user = auth()->user()->id;
+        $summary = Checkout::where('user_id', $user)->get();
+
+        return view('layouts.summary', compact('summary'));
     }
 
     /**

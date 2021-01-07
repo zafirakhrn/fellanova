@@ -2,15 +2,6 @@
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="{!! asset('/css/cart.css') !!}">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 @endsection
 
 @section('body')
@@ -35,7 +26,6 @@
     <br>
     <div class="content-wrapper">
         <table id="cart" class="table table-hover table-condensed">
-
             <thead style="font-family:montserrat;">
                 <tr>
                     <br>
@@ -73,16 +63,13 @@
             <tfoot>
                 <tr>
                     <td colspan="3"></td>
-                    <td class="hidden-xs text-center"><strong style="font-family:montserrat;">Total {{number_format($subtotal)}}</strong></td>
+                    <td class="hidden-xs text-center"><strong style="font-family:montserrat;">Total Rp. {{number_format($subtotal)}}</strong></td>
+                    <form action="/checkout" method="POST">@csrf
                     <td>
-                       <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"><a href="/summary/"> Check Out </button> </a>
-                         
-                       
-                                
+                        <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"> Check Out </button>
                     </td>
-
+                </form>
                 </tr>
-
             </tfoot>
         </table>
     </div>
