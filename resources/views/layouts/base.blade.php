@@ -66,7 +66,7 @@
         <strong style="margin-right:20px;">Welcome,<a href="/profile/"> {{Auth::user()->name}}</a></strong>
 
         <a href="/cart">
-          <button style="margin-right: 20px; font-size:15px; background-color: #B81900; border: none;" type="button" class="btn btn-sm">
+          <button style="margin-right: 20px; font-size:15px; background-color: green; border: none;" type="button" class="btn">
             <span style="color: white;" class="glyphicon glyphicon-shopping-cart"></span></button>
         </a>
         <a href="/logout/">

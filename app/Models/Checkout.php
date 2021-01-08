@@ -9,6 +9,7 @@ class Checkout extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'nama_item',
         'jumlah_pesanan',
         'quantity',
         'harga',

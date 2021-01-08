@@ -64,9 +64,8 @@
                 <tr>
                     <td colspan="3"></td>
                     <td class="hidden-xs text-center"><strong style="font-family:montserrat;">Total Rp. {{number_format($subtotal)}}</strong></td>
-                    <form action="/checkout" method="POST">@csrf
                     <td>
-                        <button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"> Check Out </button>
+                    <a href ="/summary"><button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"> Check Out </button></a>
                     </td>
                 </form>
                 </tr>

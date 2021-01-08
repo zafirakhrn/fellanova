@@ -17,7 +17,7 @@ class CartController extends Controller
         $cart = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
         $subtotal = Cart::where('user_id', auth()->user()->id)->where('status', 1)->sum('subtotal');
         return view('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal]);
-    
+        return view('layouts/summary', ['carts' => $cart, 'subtotal' => $subtotal]);
         // $user = auth()->user()->id;
         // $cart = Cart::where('user_id',$user)->where('status', null)->get();
         // $subtotal = Cart::where('user_id',$user)->get()->sum('subtotal');
@@ -76,6 +76,7 @@ class CartController extends Controller
         }
 
         return redirect('/cart')->with(['success', 'Berhasil Ditambah Ke Keranjang']);
+        return view('layouts.summary', compact('summary'));
     }
 
     public function destroy($id)

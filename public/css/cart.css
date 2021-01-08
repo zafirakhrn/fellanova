@@ -183,5 +183,13 @@ h1{
 }
 .paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
 	border-color: yellow;
-	outline: none !important;
+	outline: none !important; 
+}
+.grandtotal {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 20px;
+}
+.table-summary{
+
+  float: right;
 }
