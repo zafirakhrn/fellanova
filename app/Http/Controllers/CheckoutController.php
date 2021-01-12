@@ -7,7 +7,7 @@ use App\Models\Burger;
 use App\Models\Cart;
 use App\Models\Drink;
 use App\Models\Pizza;
-use App\Models\Checkout;
+// use App\Models\Checkout;
 
 class CheckoutController extends Controller
 {
@@ -75,7 +75,7 @@ class CheckoutController extends Controller
         }
 
         return redirect('/cart')->with(['success', 'Berhasil Ditambah Ke Keranjang']);
-        return view('layouts.summary', compact('summary'));
+        // return view('layouts.summary', compact('summary'));
     }
 
     public function destroy($id)

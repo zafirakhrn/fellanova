@@ -16,41 +16,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [PagesController::class,'home']);
-Route::get('/menu', [PagesController::class,'menu']);
-Route::get('/pizza', [PagesController::class, 'pizza']);
-Route::get('/burger', [PagesController::class,'burger']);
-Route::get('/drink', [PagesController::class,'drink']);
-Route::get('/about', [PagesController::class,'about']);
-Route::get('/location', [PagesController::class,'location']);
-Route::get('/profile', [PagesController::class,'profile']);
-Route::get('/payment', [PagesController::class,'payment']);
-Route::get('/summary', [PagesController::class,'summary']);
-
-
-Route::get('/register', [AuthController::class,'register']);
-Route::post('/register/check', [AuthController::class,'doRegister']);
-
-Route::get('/login', [AuthController::class,'login']);
-Route::post('/login/check', [AuthController::class,'doLogin']);
-Route::get('/login/success', [AuthController::class,'successlogin']);
-Route::get('/logout', [AuthController::class,'logout']);
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Route::get('/cart', [App\Http\Controllers\CartControllerController::class, 'index']);
-
-
-// Route::get('/cart', [App\Http\Controllers\CartController::class,'index']);
-
-
-Route::get('/cart', [App\Http\Controllers\CartController::class,'create']);
-Route::post('/cart_create/{type}/{id}', [App\Http\Controllers\CartController::class,'store']);
-Route::get('/cart_delete/{id}', [App\Http\Controllers\CartController::class,'destroy']);
-Route::get('/summary', [App\Http\Controllers\CheckoutController::class,'create']);
-Route::post('/summary/{type}/{id}', [App\Http\Controllers\CheckoutController::class,'store']);
+        
 
 
 
