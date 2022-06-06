@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Kategori;
+use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $product = Product::inRandomOrder()->paginate(10);
+        $users = User::all();
+        $rolesCount = Role::count();
+        
+        return view('home', compact('product', 'users', 'rolesCount'));
     }
 }

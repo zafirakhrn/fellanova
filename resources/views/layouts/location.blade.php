@@ -1,4 +1,4 @@
-@extends('layouts/base')
+@extends('layouts/index')
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="{!! asset('/css/location.css') !!}">

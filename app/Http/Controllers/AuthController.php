@@ -13,7 +13,8 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('Auth/login');
+        return view('Auth/logincs');
+ 
     }
     public function doLogin(Request $request)
     {
@@ -34,20 +35,27 @@ class AuthController extends Controller
         }
     }
 
-    function successlogin()
+    function successlogin(Request $request)
     {
-        return redirect('/');
+        $itemuser = $request->user();
+        if ($itemuser->role == 'Admin'){
+        return redirect('/home');
+        }else if ($itemuser->role == 'Manufacturer'){
+            return redirect('/home');
+        }else{
+            return redirect('/');
+        }
     }
 
     function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 
     public function register()
     {
-        return view('Auth/register');
+        return view('Auth/registercs');
     }
 
     public function doRegister(Request $request)
@@ -55,15 +63,17 @@ class AuthController extends Controller
         $this->validate($request, [
             'name' => 'required|min:4',
             'email' => 'required|email',
-            'password' => 'required|alphaNum|min:3'
+            'password' => 'required|alphaNum|min:3',
+            'role' => 'required',
         ]);
 
         $user = \App\Models\User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)  
+            'password' => bcrypt($request->password)  ,
+            'role' => $request->role,  
         ]);
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

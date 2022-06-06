@@ -1,7 +1,7 @@
 .register{
     width: 380px;
     height: 460px;
-    margin-left: 885px;
+       margin: auto;
     margin-top: 55px;
 
 }
@@ -32,8 +32,6 @@ h2{
 }
 p{
     font-family: 'Open Sans', sans-serif;
-    width: 138px;
-    margin: auto;
     font-weight: 700;
 }
 
@@ -101,4 +99,10 @@ p{
     border: none; 
     display: flex;
     flex-direction: column;
+}
+.login{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 400px;
 }

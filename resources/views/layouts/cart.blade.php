@@ -1,14 +1,15 @@
-@extends('layouts/base')
-
+@extends('layouts.base')
+<title>Cart</title>
 @section('head')
 <link rel="stylesheet" type="text/css" href="{!! asset('/css/cart.css') !!}">
 @endsection
 
 @section('body')
+
 <div class="container-fluid">
     <p> <br> <br> </p>
     <div class="back">
-        <a href="/menu/">
+        <a href="/product/">
             <i class="fa fa-arrow-left"></i><i style="font-family:montserrat;">Continue Shopping</i>
         </a>
     </div>
@@ -29,43 +30,70 @@
             <thead style="font-family:montserrat;">
                 <tr>
                     <br>
-                    <th style="width:50%">Menu Item</th>
-                    <th style="width:10%">Price</th>
-                    <th style="width:5%">Quantity</th>
-                    <th style="width:22%" class="text-center">Subtotal</th>
-                    <th style="width:10%"></th>
+                    <th style="width:40%">Produk</th>
+                    <th style="width:20%">Harga</th>
+                    <th style="width:30%">Jumlah</th>
+                    <th style="width:5%"> </th>
+                    <th style="width:22%" >Subtotal</th>
+                    <th style="width:10%"> </th>
                 </tr>
             </thead>
-            <!-- @if($carts != null) -->
-            @foreach ($carts as $item)
+            @foreach($itemcart->detail as $detail)
             <tbody>
                 <tr>
-                    <td data-th="Product">
+                    <td data-th="Produk">
                         <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="{{$item->image}}" alt="..." class="img-responsive" /></div>
-                            <div class="col-sm-9">
-                                <h4 class="nomargin">{{$item->jenis_makananMinuman}}</h4>
+                            <div class="col-sm-5 hidden-xs"><img src="/image/{{ $detail->gambar }}" class="img-thumbnail" width="200" height="200"></div>
+                            <div class="col-sm-5">
+                            <b> {{ $detail->product->nama }} </b>
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">{{number_format($item->harga)}}</td>
-                    <td data-th="Quantity">
-                        <input type="number" class="form-control text-center" value="{{$item->quantity}}">
-                    </td>
-                    <td data-th="Subtotal" class="text-center">{{number_format($item->total)}}</td>
-                    <td class="actions" data-th="">
-                        <a href="/cart_delete/{{$item->id}}"><button style="background-color: #B81900; color:white;" class="btn btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                    <td data-th="Harga">Rp.{{ number_format($detail->harga, 2) }}</td>
+                    <td data-th="Jumlah">
+                    <form action="{{ route('cartdetail.update',$detail->id) }}" method="post">
+                    @method('patch')
+                    @csrf()
+                    <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary" value="kurang" name="param">
+                    -</button>
+                    </form>
+                    <button class="btn btn-outline-primary btn-sm" disabled="true">
+                    {{ number_format($detail->quantity)}}
+                    
+                    </button>
+                    <button type="submit" class="btn btn-primary" value="tambah" name="param">
+                    +</button>
+                   
+                    </form>
+                  </div>
+                </td>
+                <td>
+                </tb>
+                <td>
+                Rp.{{ number_format($detail->subtotal, 2) }}
+                </td>
+                <td>
+                <form action="{{ route('cartdetail.destroy', $detail->id) }}" method="post" style="display:inline;">
+                  @csrf
+                  {{ method_field('delete') }}
+                  <button type="submit" class="btn btn-sm btn-danger mb-2">
+                    Hapus
+                  </button>                    
+                </form>
                     </td>
                 </tr>
             </tbody>
             @endforeach
-            <!-- @endif -->
+         
             <tfoot>
                 <tr>
                     <td colspan="3"></td>
-                    <td class="hidden-xs text-center"><strong style="font-family:montserrat;">Total Rp. {{number_format($subtotal)}}</strong></td>
-                    <td>
-                    <a href ="/summary"><button type="submit" class="btn btn-success pull-right btn-fyi" style="padding: 5px;font-family:montserrat;"> Check Out </button></a>
+                    <td class="text-center"><h4><strong style="font-family:montserrat;">Total</strong></h4></td>
+                    <td><h4><strong style="font-family:montserrat;">Rp.{{ number_format($itemcart->total, 2) }}</strong></h4>
+</td>
+<td>
+                    <a href="{{ URL::to('checkout') }}"><button type="submit" class="btn btn-success btn-fyi" style="font-family:montserrat;"> <b> Checkout </b></button></a>
                     </td>
                 </form>
                 </tr>
@@ -74,3 +102,6 @@
     </div>
 </div>
 @endsection
+
+
+

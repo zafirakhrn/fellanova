@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultstringLength(191);
-    }
+        $this->register();
+    
+    \Gate::define('admin_only', function ($user) {
+        if ($user->role == 'Admin') {
+            return true;
+        }
+        return false;
+    });
+}
 }

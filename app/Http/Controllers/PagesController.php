@@ -12,34 +12,19 @@ class PagesController extends Controller
     public function menu(){
         return view ('layouts/menu');
     }
-    public function pizza(){
-        $pizza = \App\Models\Pizza::all();
-        return view ('layouts/pizza', ['pizzas' => $pizza]);
-    }
-    public function burger(){
-        $burger = \App\Models\Burger::all();
-        return view ('layouts/burger', ['burgers' => $burger]);
-    }
-    public function drink(){
-        $drink = \App\Models\Drink::all();
-        return view ('layouts/drink',['drinks' => $drink]);
-    }
-    public function cart(){
-        return view ('layouts/cart');
-    }
     public function about(){
         return view ('layouts/about');
     }
-    public function location(){
-        return view ('layouts/location');
+    public function custom(){
+        return view ('layouts/custom');
     }
     public function profile(){
         return view ('layouts/profile');
     }
-    public function payment(){
-        return view ('layouts/payment');
+    public function checkout(){
+        return view ('layouts/checkout');
     }
-    public function summary(){
-        return view ('layouts/summary');
+    public function detail(){
+        return view ('layouts/detail');
     }
 }

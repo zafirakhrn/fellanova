@@ -3,85 +3,139 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Burger;
 use App\Models\Cart;
-use App\Models\Drink;
-use App\Models\Pizza;
-use App\Models\Checkout;
-
+use App\Models\AlamatPengiriman;
+use App\Models\Order;
 class CartController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $itemuser = $request->user();//ambil data user
+        $itemcart = Cart::where('user_id', $itemuser->id)
+                        ->where('status_cart', 'cart')
+                        ->first();
+        if ($itemcart) {
+            $data = array('title' => 'Shopping Cart',
+                        'itemcart' => $itemcart);
+            return view('layouts.cart', $data)->with('no', 1);            
+        } else {
+            return abort('404');
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
-        $subtotal = Cart::where('user_id', auth()->user()->id)->where('status', 1)->sum('subtotal');
-        return view('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal]);
-        return view('layouts/summary', ['carts' => $cart, 'subtotal' => $subtotal]);
-        // $user = auth()->user()->id;
-        // $cart = Cart::where('user_id',$user)->where('status', null)->get();
-        // $subtotal = Cart::where('user_id',$user)->get()->sum('subtotal');
-        // return view ('layouts/cart', ['carts' => $cart, 'subtotal' => $subtotal])
+        //
     }
 
-    public function store(Request $request, $type,$id)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $request->validate([]);
-        if($type == 'burger')
-            $burger = Burger::find($id);
-        if($type == 'pizza')
-            $pizza = Pizza::find($id);
-        if($type == 'drink')
-            $drink = Drink::find($id);
-        $user = auth()->user()->id;
-
-
-        $cart = new Cart;
-        if ($type == 'burger' && $cart->jenis_makananMinuman = $burger->jenis_burger) {
-            # code...
-            $cart->jenis_makananMinuman = $burger->jenis_burger;
-            $cart->quantity = $request->quantity;
-            $cart->harga = $burger->harga;        
-            $cart->image = $burger->image;
-            $cart->subtotal = $cart->harga * $cart->quantity;
-            $cart->total += $cart->subtotal;
-            $cart->status=1;
-            $cart->user_id = $user;
-            $cart->save();
-        } 
-        if ($type == 'pizza' && $cart->jenis_makananMinuman = $pizza->jenis_pizza) {
-            # code...
-            $cart->jenis_makananMinuman = $pizza->jenis_pizza;
-            $cart->quantity = $request->quantity;
-            $cart->harga = $pizza->harga;        
-            $cart->image = $pizza->image;
-            $cart->subtotal = $cart->harga * $cart->quantity;
-            $cart->total += $cart->subtotal;
-            $cart->status=1;
-            $cart->user_id = $user;
-            $cart->save();
-
-        } 
-        if ($type == 'drink' && $cart->jenis_makananMinuman = $drink->jenis_minuman) {
-            # code...
-            $cart->jenis_makananMinuman = $drink->jenis_minuman;
-            $cart->quantity = $request->quantity;
-            $cart->harga = $drink->harga;        
-            $cart->image = $drink->image;
-            $cart->subtotal = $cart->harga * $cart->quantity;
-            $cart->total += $cart->subtotal;
-            $cart->status=1;
-            $cart->user_id = $user;
-            $cart->save();
-        }
-
-        return redirect('/cart')->with(['success', 'Berhasil Ditambah Ke Keranjang']);
-        return view('layouts.summary', compact('summary'));
+        //
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $cart = Cart::destroy($id);
-        return redirect('/cart')->with(['succes', 'Berhasil Di Hapus']);
+        //
     }
+
+    public function kosongkan($id) {
+        $itemcart = Cart::findOrFail($id);
+        $itemcart->detail()->delete();//hapus semua item di cart detail
+        $itemcart->updatetotal($itemcart, '-'.$itemcart->subtotal);
+        return back()->with('success', 'Cart berhasil dikosongkan');
+    }
+
+    public function checkout(Request $request) {
+        $itemuser = $request->user();
+        $itemcart = Cart::where('user_id', $itemuser->id)
+                        ->where('status_cart', 'cart')
+                        ->first();
+        $itemalamatpengiriman = AlamatPengiriman::where('user_id', $itemuser->id)
+                                                ->where('status', 'utama')
+                                                ->first();
+        if ($itemcart) {
+            $data = array('title' => 'Checkout',
+                        'itemcart' => $itemcart,
+                        'itemalamatpengiriman' => $itemalamatpengiriman);
+                        $itemcart->update(['status_cart' => 'checkout']);
+                        $itemcart->update(['ongkir' => ($itemcart->total*5.00/100.00)]);
+                        $itemcart->update(['total' => ($itemcart->subtotal+$itemcart->ongkir)]);
+            return view('layouts.checkout', $data)->with('no', 1);
+        } else {
+            return abort('404');
+        }
+    }
+
+        public function payment(Request $request) {
+            $itemuser = $request->user();
+            $itemcart = Cart::where('user_id', $itemuser->id)
+                            ->where('status_cart', 'checkout')
+                            ->first();
+            $itemalamatpengiriman = AlamatPengiriman::where('user_id', $itemuser->id)
+                                                    ->where('status', 'utama')
+                                                    ->first();
+            if ($itemcart) {
+                $data = array('title' => 'Checkout',
+                            'itemcart' => $itemcart,
+                            'itemalamatpengiriman' => $itemalamatpengiriman);
+                return view('layouts.payment', $data)->with('no', 1);
+            } else {
+                return abort('404');
+            }    }
 }

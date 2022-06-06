@@ -19,7 +19,7 @@ h1{
   }
 
 .content-wrapper {
-  width: 960px;
+  width: 1000px;
   margin: 0 auto;
   background-color: grey;
   border-width: 3;
@@ -53,20 +53,20 @@ h1{
 }
 .steps:before {
   top: -2px;
-  border-top: 2px solid orange;
-  border-right: 2px solid orange;
-  border-left: 2px solid orange;
-  background:   bisque;
+  border-top: 2px solid SandyBrown;
+  border-right: 2px solid SandyBrown;
+  border-left: 2px solid SandyBrown;
+  background:   seashell;
   -moz-transform: skew(30deg);
   -webkit-transform: skew(30deg);
   transform: skew(30deg);
 }
 .steps:after {
   bottom: -2px;
-  border-left: 2px solid orange;
-  border-right: 2px solid orange;
-  border-bottom: 2px solid orange;
-  background:  bisque;
+  border-left: 2px solid SandyBrown;
+  border-right: 2px solid SandyBrown;
+  border-bottom: 2px solid SandyBrown;
+  background:  seashell;
   -moz-transform: skew(-30deg);
   -webkit-transform: skew(-30deg);
   transform: skew(-30deg);
@@ -80,17 +80,17 @@ h1{
   border-right: none;
 }
 .steps:last-child {
-  background:  bisque;
-  border-right: 2px solid orange;
-  border-top: 2px solid orange;
-  border-bottom: 2px solid orange;
+  background:  seashell;
+  border-right: 2px solid SandyBrown;
+  border-top: 2px solid SandyBrown;
+  border-bottom: 2px solid SandyBrown;
   margin-left: 38px;
 }
 .steps:first-child {
-  background:  orange;
-  border-left: 2px solid orange;
-  border-top: 2px solid orange;
-  border-bottom: 2px solid orange;
+  background:  SandyBrown;
+  border-left: 2px solid SandyBrown;
+  border-top: 2px solid SandyBrown;
+  border-bottom: 2px solid SandyBrown;
   margin-right: 18px;
 }
 .steps:first-child:before,
@@ -108,28 +108,28 @@ h1{
 .active:last-child,
 .active:before,
 .active:after {
-  background: orange;
+  background: SandyBrown;
 }
 .active:first-child {
-  border-left: 2px solid  orange;
+  border-left: 2px solid  SandyBrown;
 }
 .active:last-child {
-  border-right: 2px solid  orange;
+  border-right: 2px solid  SandyBrown;
 }
 .active:before {
-  border-top: 2px solid  orange;
-  border-right: 2px solid  orange;
-  border-left: 2px solid  orange;
+  border-top: 2px solid  SandyBrown;
+  border-right: 2px solid  SandyBrown;
+  border-left: 2px solid  SandyBrown;
 }
 .active:after {
-  border-left: 2px solid  orange;
-  border-right: 2px solid  orange;
-  border-bottom: 2px solid  orange;
+  border-left: 2px solid  SandyBrown;
+  border-right: 2px solid  SandyBrown;
+
 }
 .active:first-child,
 .active:last-child {
-  border-top: 2px solid  orange;
-  border-bottom: 2px solid  orange;
+  border-top: 2px solid  SandyBrown;
+  border-bottom: 2px solid  SandyBrown;
 }
 .paymentWrap {
 	padding: 50px;
@@ -151,7 +151,7 @@ h1{
 }
 
 .paymentWrap .paymentBtnGroup .paymentMethod.active .method {
-	/* border-color: orange; */
+	/* border-color: SandyBrown; */
 	outline: none !important;
 	box-shadow: 0px 3px 22px 0px #7b7b7b;
 }
@@ -190,6 +190,5 @@ h1{
     font-size : 20px;
 }
 .table-summary{
-
   float: right;
 }

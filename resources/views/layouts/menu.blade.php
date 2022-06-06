@@ -1,43 +1,31 @@
-@extends('layouts/base')
-
-@section('head')
-<link rel="stylesheet" type="text/css" href="{!! asset('/css/menu.css') !!}">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-@endsection
-
-@section('body')
-<div class="container-fluid">
-    <div class="judul">
-        <h1>OUR MENU</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">Toko</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="mr-auto navbar-nav"></ul>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('produk') }}">Produk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('kategori') }}">Kategori</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('kontak') }}">Kontak</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('about') }}">Tentang Kami</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ URL::to('login') }}">Login</a>
+        </li>
+      </ul>
     </div>
-    <div class="row">
-        <a href="/pizza/">
-            <div class="container-menu">
-                <img class="gambar" src="https://media.discordapp.net/attachments/767045716420853772/770509270097068052/bigpizza.png?width=672&height=452">
-                <div class="title">
-                    <p>Pizza</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="/burger/">
-            <div class="container-menu">
-                <img class="gambar" src="https://nos.jkt-1.neo.id/mcdonalds/foods/November2019/0nR6ysDcMRuLttBeJ4Ho.png">
-                <div class="title">
-                    <p>Burger</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="/drink/">
-            <div class="container-menu">
-                <img class="gambar" src="https://nos.jkt-1.neo.id/mcdonalds/foods/September2019/5nIDFH9VTNE16UcjnnyW.png">
-                <div class="title">
-                    <p>Beverage</p>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-@endsection
+  </div>
+</nav>
