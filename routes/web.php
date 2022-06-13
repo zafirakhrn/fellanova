@@ -113,4 +113,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login/check', [AuthController::class, 'doLogin']);
+Route::get('/login/success', [AuthController::class, 'successlogin']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'create']);
+Route::post('/cart_create/{type}/{id}', [App\Http\Controllers\CartController::class, 'store']);
+Route::get('/cart_delete/{id}', [App\Http\Controllers\CartController::class, 'destroy']);
+Route::get('/summary', [App\Http\Controllers\CheckoutController::class, 'create']);
+Route::post('/summary/{type}/{id}', [App\Http\Controllers\CheckoutController::class, 'store']);
